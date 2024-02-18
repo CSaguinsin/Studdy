@@ -20,7 +20,9 @@ git clone https://github.com/CSaguinsin/Studdy.git
 After that run the following commands in the root of the repository:
 ```
 npm install
+php artisan migrate
 npm run dev
+php artisan serve
 ```
 # 🔥Features
 * Can CRUD (create, read, update, delete)
