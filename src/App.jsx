@@ -7,6 +7,7 @@ import './App.css'
 // components
 import Home from './landingPage/Home'
 import Navbar from './navbar/Navbar'
+import Footer from './footer/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Home />} />
       </Routes>
+      <Footer />
     </>
   )
 }
