@@ -1,0 +1,27 @@
+.title{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-size: 10rem;
+}
+
+.secondtitle{
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.thirdtitle {
+    font-size: 5rem;
+}
+
+.paragraph {
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-size: 1.5rem;
+}
