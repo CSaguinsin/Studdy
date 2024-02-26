@@ -13,9 +13,10 @@ const Home = () => {
 {/* hero section */}
 <section className="m-10 flex flex-wrap justify-between items-center">
         <div className="w-full md:w-1/2 md:pr-8">
-          <h1 className="title">STUDDY</h1>
-          <p className="paragraph">Connect, Collaborate and Chronicle your study <br /> 
-          adventures with the ultimate platform where <br /> finding study buddies meets sharing insightful <br /> study blogs!</p>
+          <h1 className="title">
+            <span style={{ fontFamily: 'Lemon' }}>Connect</span> , <span style={{ fontFamily: 'Satisfy', color: '#FF0000' }}>Collaborate</span> and make STUDDYing more fun!</h1>
+          {/* <p className="paragraph">Connect, Collaborate and Chronicle your study <br /> 
+          adventures with the ultimate platform where <br /> finding study buddies meets sharing insightful <br /> study blogs!</p> */}
             <div className='pt-5'>
             <button
                 type="button"
