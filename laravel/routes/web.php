@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,5 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-// require __DIR__.'/guest.php';
+
+require __DIR__.'/guest.php';
