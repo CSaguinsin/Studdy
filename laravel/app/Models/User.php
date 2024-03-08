@@ -25,7 +25,6 @@ class User extends Authenticatable
         'password',
         'password_confirmation',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
