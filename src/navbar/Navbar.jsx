@@ -2,17 +2,20 @@ import React from 'react'
 import StuddyLogo from '../assets/StuddyLogo.png'
 import './Navbar.css'
 import {Button} from "@nextui-org/react";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
    <>
       <nav style={{ backgroundColor: '#DADDE2' }} className="dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
+          <Link to="/" >
             <img
               src={StuddyLogo}
               className="logo" // Apply custom class for logo styling
               alt="Flowbite Logo"
             />
+          </Link>
     <button
       data-collapse-toggle="navbar-default"
       type="button"
@@ -37,12 +40,13 @@ const Navbar = () => {
         />
       </svg>
     </button>
+<Link to="/login" className="hidden w-full md:block md:w-auto">
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
 <Button className='button text-white rounded-full' color="success">
     Get Started
 </Button>
-
     </div>
+</Link>
   </div>
 </nav>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import logo from '../images/studdy.png';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
