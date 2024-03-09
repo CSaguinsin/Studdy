@@ -31,6 +31,13 @@ const SignIn = () => {
                 type="text"
               />
 
+              <p className="mb-0  text-sm">Email</p>
+
+              <input
+                className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 bg-gray-400 text-black focus:outline-none focus:border-gray-300"
+                type="text"
+              />
+
               <p className="mb-0 text-sm">Password</p>
               <input
                 className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 bg-gray-400 text-black focus:outline-none focus:border-gray-300"

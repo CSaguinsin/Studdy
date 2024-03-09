@@ -1,11 +1,26 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import logo from '../images/studdy.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from '../../api/axios';
+
 
 const Login = () => {
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState(" ");
   const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    event.preventDefault();
+    try {
+        await axios.post('/login', {email, password});
+        setEmail(" ");
+        setPassword(" ");
+        navigate('/landingpage');
+    } catch(e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className="relative box-border flex items-center p-1 h-screen">
@@ -18,14 +33,18 @@ const Login = () => {
         <p className="text-center mb-4 text-2xl font-lexend ">Log In</p>
 
         <div className="w-full md:w-auto flex-col mr-5">
-          <form className="space-y-4 w-auto">
+          <form onSubmit={handleLogin} className="space-y-4 w-auto">
             <p className="mb-0 text-sm-3">E-mail</p> 
             <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 rounded focus:outline-none focus:border-blue-500"
               type="text"
             />
             <p className="mb-0 text-sm font-abc">Password</p> 
             <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 rounded focus:outline-none focus:border-blue-500"
               type="password"
             />
