@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
+import { ContextProvider } from './context/ContextProvider';
 
 
 
@@ -16,7 +17,7 @@ import LandingPage from './MainUI/LandingPage/landingPage'
 
 function App() {
   return (
-    <>
+    <ContextProvider>
       <Navbar />
           <Routes>
               <Route path="/" element={<Home />} />
@@ -28,7 +29,7 @@ function App() {
               {/* end */}
           </Routes>
       <Footer />
-    </>
+      </ContextProvider>
   )
 }
 
