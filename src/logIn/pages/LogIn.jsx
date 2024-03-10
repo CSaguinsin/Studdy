@@ -10,13 +10,13 @@ const Login = () => {
   const [password, setPassword] = useState(" ");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     try {
         await axios.post('/login', {email, password});
-        setEmail(" ");
-        setPassword(" ");
-        navigate('/landingpage');
+        setEmail("");
+        setPassword("");
+        navigate('/');
     } catch(e) {
       console.log(e);
     }
@@ -33,20 +33,20 @@ const Login = () => {
         <p className="text-center mb-4 text-2xl font-lexend ">Log In</p>
 
         <div className="w-full md:w-auto flex-col mr-5">
-          <form onSubmit={handleLogin} className="space-y-4 w-auto">
+          <form onSubmit={handleLogin}  className="space-y-4 w-auto">
             <p className="mb-0 text-sm-3">E-mail</p> 
             <input
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 rounded focus:outline-none focus:border-blue-500"
-              type="text"
+              className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300  focus:outline-none focus:border-blue-500"
             />
             <p className="mb-0 text-sm font-abc">Password</p> 
             <input
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300 rounded focus:outline-none focus:border-blue-500"
-              type="password"
+              className="rounded-lg text-sm w-full px-3 py-2 border border-solid border-gray-300  focus:outline-none focus:border-blue-500"
             />
 
             <div className="flex justify-end text-sm">
@@ -79,7 +79,7 @@ const Login = () => {
               </div>
             </div>
             
-            <button className="border-2 border-gray-400 bg-blue-600 hover:bg-blue-700 shadow-md py-2 min-w-full text-white rounded-lg text-lg tracking-wider font-lexend-deca" type="submit">
+            <button   className="border-2 border-gray-400 bg-blue-600 hover:bg-blue-700 shadow-md py-2 min-w-full text-white rounded-lg text-lg tracking-wider font-lexend-deca" type="submit">
               Log in
             </button>
 

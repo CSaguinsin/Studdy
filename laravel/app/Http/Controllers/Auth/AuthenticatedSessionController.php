@@ -15,31 +15,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): Response
     {
-        $request->authenticate();
-
-        $user = $request->user();
-
-        $user->tokens()->delete();
-
-        $request->session()->regenerate();
-
         $credentials = $request->validated();
         $remember = $credentials['remember'] ?? false;
         unset($credentials['remember']);
 
         if (!Auth::attempt($credentials, $remember)) {
-            return response([
-                'error' => 'The Provided credentials are not correct'
-            ], 422);
+            return response()->json(['error' => 'The provided credentials are incorrect'], 401);
         }
-        $user = Auth::user();
-        $token = $user->createToken($user->email.'api-token')->plainTextToken;
 
-        return response([
-            'user' => $user,
-            'token' => $token
-        ]); 
+        $user = Auth::user();
+        $token = $user->createToken($user->email . 'api-token')->plainTextToken;
+
+        return response()->json([
+            'data' => [
+                'user' => $user,
+                'token' => $token
+            ]
+        ]);
     }
+
 
     /**
      * Destroy an authenticated session.
