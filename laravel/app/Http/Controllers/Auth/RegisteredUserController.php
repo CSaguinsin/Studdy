@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
         } catch (ValidationException $e) {
             return response()->json([
                 'status' => 422,
-                'validation_errors' => $e->validator->getMessageBag(),
+                'errors' => $e->validator->getMessageBag(),
                 'message' => 'Validation failed'
             ], 422);
         }

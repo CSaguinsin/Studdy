@@ -21,15 +21,14 @@ class RegisterRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            [
-                'firstname' => ['required', 'string', 'max:255'],
-                'lastname' => ['required', 'string', 'max:255'],
-                'department' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'. User::class],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            ]
-        ];
-    }
+{
+    return [
+        'firstname' => ['string', 'max:255'],
+        'lastname' => ['string', 'max:255'],
+        'department' => ['string', 'max:255'],
+        'email' => ['string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+        'password' => ['string', 'confirmed', Rules\Password::defaults()],
+    ];
+}
+
 }
