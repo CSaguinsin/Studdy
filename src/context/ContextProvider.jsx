@@ -41,7 +41,7 @@ export const ContextProvider = ({ children  }) => {
         setUserToken(data.token);
           new Swal({
             title: "Success",
-            text: "Admin",
+            text: "Logged In",
             icon: "success",
             showConfirmButton: false,
             timer: 1500,
@@ -51,6 +51,9 @@ export const ContextProvider = ({ children  }) => {
       })
       .catch((e) => {
         if (e.response && e.response.status === 422) {
+          setErrors(e.response.data.errors);
+        }
+        if (e.response && e.response.status === 401) {
           setErrors(e.response.data.errors);
         }
       });
