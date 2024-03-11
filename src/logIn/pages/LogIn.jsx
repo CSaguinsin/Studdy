@@ -87,7 +87,6 @@ const Login = () => {
               <a
                 onClick={() => navigate("/signin")}
                 className="text-gray-400 hover:text-gray-700 underline font-lexend"
-                href="#"
               >
                 OR SIGN UP
               </a>

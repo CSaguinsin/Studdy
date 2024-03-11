@@ -58,28 +58,28 @@ export const ContextProvider = ({ children  }) => {
         }
       });
   };
-//   const register = async ({ ...data }) => {
-//     await csrf();
-//     axios
-//       .post("/api/register", data)
-//       .then(({ data }) => {
-//         setUser(data.user);
-//         setUserToken(data.token);
-//         new Swal({
-//           title: "Success",
-//           text: "Registration Successfully",
-//           icon: "success",
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//         navigate("/login");
-//       })
-//       .catch((e) => {
-//         if (e.response && e.response.status === 422) {
-//           setErrors(e.response.data.errors);
-//         }
-//       });
-//   };
+  const register = async ({ ...data }) => {
+    await csrf();
+    axios
+      .post("/api/register", data)
+      .then(({ data }) => {
+        setUser(data.user);
+        setUserToken(data.token);
+        new Swal({
+          title: "Success",
+          text: "Registration Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      })
+      .catch((e) => {
+        if (e.response && e.response.status === 422) {
+          setErrors(e.response.data.errors);
+        }
+      });
+  };
 //   const logout = () => {
 //     const swalWithBootstrapButtons = Swal.mixin({
 //       customClass: {
@@ -126,17 +126,17 @@ export const ContextProvider = ({ children  }) => {
     <StateContext.Provider
       value={{
         login,
-        // register,
+        register,
         // logout,
-        // setUser,
-        // userToken,
-        // setUserToken,
-        // getUser,
-        // user,
+        setUser,
+        userToken,
+        setUserToken,
+        getUser,
+        user,
         errors,
-        // setErrors,
-        // csrf,
-        // navigate
+        setErrors,
+        csrf,
+        navigate
       }}
     >
       {children}
