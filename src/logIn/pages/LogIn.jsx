@@ -85,9 +85,8 @@ const Login = () => {
 
             <div className="flex justify-center items-center text-sm text-center">
               <a
-                onClick={() => navigate("/signin")}
+                href="/signin"
                 className="text-gray-400 hover:text-gray-700 underline font-lexend"
-                href="#"
               >
                 OR SIGN UP
               </a>

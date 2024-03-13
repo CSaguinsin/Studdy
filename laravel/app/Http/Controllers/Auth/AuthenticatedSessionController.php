@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
         unset($credentials['remember']);
 
         if (!Auth::attempt($credentials, $remember)) {
-            return response()->json(['error' => 'The provided credentials are incorrect'], 401);
+            return response()->json(['errors' => 'The provided credentials are incorrect'], 401);
         }
 
         $user = Auth::user();

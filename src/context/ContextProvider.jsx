@@ -41,11 +41,12 @@ export const ContextProvider = ({ children  }) => {
         setUserToken(data.token);
           new Swal({
             title: "Success",
-            text: "Admin",
+            text: "Logged In",
             icon: "success",
             showConfirmButton: false,
             timer: 1500,
           });
+          setErrors([]);
           navigate("/");
          
       })
@@ -53,87 +54,92 @@ export const ContextProvider = ({ children  }) => {
         if (e.response && e.response.status === 422) {
           setErrors(e.response.data.errors);
         }
+        if (e.response && e.response.status === 401) {
+          setErrors(e.response.data.errors);
+        }
       });
   };
-//   const register = async ({ ...data }) => {
-//     await csrf();
-//     axios
-//       .post("/api/register", data)
-//       .then(({ data }) => {
-//         setUser(data.user);
-//         setUserToken(data.token);
-//         new Swal({
-//           title: "Success",
-//           text: "Registration Successfully",
-//           icon: "success",
-//           showConfirmButton: false,
-//           timer: 1500,
-//         });
-//         navigate("/login");
-//       })
-//       .catch((e) => {
-//         if (e.response && e.response.status === 422) {
-//           setErrors(e.response.data.errors);
-//         }
-//       });
-//   };
-//   const logout = () => {
-//     const swalWithBootstrapButtons = Swal.mixin({
-//       customClass: {
-//         confirmButton: "btn btn-success",
-//         cancelButton: "btn btn-danger"
-//       },
-//       buttonsStyling: false
-//     });
-//     swalWithBootstrapButtons.fire({
-//       title: "Logout",
-//       text: "Are you sure?",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonText: "Logout",
-//       cancelButtonText: "Cancel",
-//       reverseButtons: true
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         axios.post("/api/logout").then(() => {
-//           swalWithBootstrapButtons.fire({
-//             title: "Logout",
-//             text: "Logout Successfully",
-//             icon: "success",
-//             showConfirmButton: false,
-//             timer: 1500,
-//           });
-//           setUser(null);
-//           navigate("/")
-//           setTimeout(() => {
-//           window.location.reload();
-//         }, 4000);
-//       });
-//       } else if (result.dismiss === Swal.DismissReason.cancel) {
-//         swalWithBootstrapButtons.fire({
-//           title: "Cancelled",
-//           text: "Logout Cancelled",
-//           icon: "error"
-//         });
-//       }
-//     });
-//   };
+  const register = async ({ ...data }) => {
+    await csrf();
+    axios
+      .post("/api/register", data)
+      .then(({ data }) => {
+        setUser(data.user);
+        setUserToken(data.token);
+        new Swal({
+          title: "Success",
+          text: "Registration Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        setErrors([]);
+        navigate("/");
+      })
+      .catch((e) => {
+        if (e.response && e.response.status === 422) {
+          setErrors(e.response.data.errors);
+        }
+      });
+  };
+  const logout = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Logout",
+      text: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Logout",
+      cancelButtonText: "Cancel",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post("/api/logout").then(() => {
+          swalWithBootstrapButtons.fire({
+            title: "Logout",
+            text: "Logout Successfully",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setUser(null);
+          navigate("/")
+          setTimeout(() => {
+          window.location.reload();
+        }, 4000);
+      });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Logout Cancelled",
+          icon: "error"
+        });
+      }
+    });
+  };
 
   return (
     <StateContext.Provider
       value={{
         login,
-        // register,
-        // logout,
-        // setUser,
-        // userToken,
-        // setUserToken,
-        // getUser,
-        // user,
+        register,
+        logout,
+        setUser,
+        userToken,
+        setUserToken,
+        getUser,
+        user,
         errors,
-        // setErrors,
-        // csrf,
-        // navigate
+        setErrors,
+        csrf,
+        navigate
       }}
     >
       {children}
