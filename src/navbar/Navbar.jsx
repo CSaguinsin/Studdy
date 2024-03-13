@@ -3,8 +3,15 @@ import StuddyLogo from "../assets/StuddyLogo.png";
 import "./Navbar.css";
 import { Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
+import { useStateContext } from "../context/ContextProvider";
 const Navbar = () => {
+  const { user, logout, getUser } = useStateContext();
+  useEffect(() => {
+    if (!user) {
+      getUser();
+    }
+  }, []);
   return (
     <>
       <nav style={{ backgroundColor: "#DADDE2" }} className="dark:bg-gray-900">
@@ -40,6 +47,19 @@ const Navbar = () => {
               />
             </svg>
           </button>
+          {user ? (
+          <>
+            <Button
+              onClick={logout}
+              type="submit"
+              className="button text-white rounded-full"
+              color="danger"
+            >
+              {user.name} Logout
+            </Button>
+          </>
+        ) : (
+          <>
           <Link to="/login" className="hidden w-full md:block md:w-auto">
             <div
               className="hidden w-full md:block md:w-auto"
@@ -53,6 +73,8 @@ const Navbar = () => {
               </Button>
             </div>
           </Link>
+          </>
+        )}
         </div>
       </nav>
     </>

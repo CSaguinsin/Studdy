@@ -15,7 +15,7 @@ const SignIn = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    register({ firstname, lastname, email, password, password_confirmation });
+    register({ firstname, lastname, email, department, password, password_confirmation });
   };
   return (
     <div className="relative flex items-center h-screen">
